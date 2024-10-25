@@ -36,7 +36,7 @@
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>110</y>
+      <y>150</y>
       <width>221</width>
       <height>51</height>
      </rect>
@@ -53,10 +53,10 @@
    <widget class="QLabel" name="lblicon_2">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>590</x>
       <y>20</y>
       <width>251</width>
-      <height>61</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -71,10 +71,10 @@
    <widget class="QLCDNumber" name="lcdNumber_timer">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>20</y>
-      <width>281</width>
-      <height>61</height>
+      <x>870</x>
+      <y>10</y>
+      <width>181</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
@@ -143,8 +143,8 @@
    <widget class="QPushButton" name="btnendtest">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>110</y>
+      <x>690</x>
+      <y>150</y>
       <width>221</width>
       <height>51</height>
      </rect>
@@ -199,6 +199,42 @@
     </property>
     <property name="text">
      <string>Подтвердить выбранные ответы</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_go_menu">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Служеюное меню</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>70</y>
+      <width>211</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Для начала теста введите Ваше ФИО</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>100</y>
+      <width>451</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
    <widget class="QWidget" name="">
