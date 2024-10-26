@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDialog,
-    QGridLayout, QLabel, QPushButton, QSizePolicy,
-    QTextEdit, QWidget)
+    QGridLayout, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QTextEdit, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -291,6 +291,15 @@ class Ui_Dialog(object):
         self.comboBox_theme = QComboBox(Dialog)
         self.comboBox_theme.setObjectName(u"comboBox_theme")
         self.comboBox_theme.setGeometry(QRect(450, 70, 531, 22))
+        self.label_2 = QLabel(Dialog)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(470, 30, 81, 16))
+        font = QFont()
+        font.setPointSize(12)
+        self.label_2.setFont(font)
+        self.list_test_name = QLineEdit(Dialog)
+        self.list_test_name.setObjectName(u"list_test_name")
+        self.list_test_name.setGeometry(QRect(550, 30, 113, 22))
 
         self.retranslateUi(Dialog)
 
@@ -343,5 +352,6 @@ class Ui_Dialog(object):
         self.checkBox_answer_d.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0438\u0435 \u043d\u043e\u0432\u043e\u0433\u043e \u0442\u0435\u0441\u0442\u0430", None))
         self.pushButton.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0442\u0435\u0441\u0442", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u0441\u0442", None))
     # retranslateUi
 

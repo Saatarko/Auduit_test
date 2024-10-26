@@ -85,229 +85,229 @@ class Ui_MainWindow(object):
         self.lineEdit = QLineEdit(self.centralwidget)
         self.lineEdit.setObjectName(u"lineEdit")
         self.lineEdit.setGeometry(QRect(460, 100, 451, 22))
-        self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(20, 200, 401, 590))
-        self.gridLayout = QGridLayout(self.widget)
+        self.layoutWidget = QWidget(self.centralwidget)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(20, 200, 401, 590))
+        self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.btn_quest_1 = QPushButton(self.widget)
+        self.btn_quest_1 = QPushButton(self.layoutWidget)
         self.btn_quest_1.setObjectName(u"btn_quest_1")
         self.btn_quest_1.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_1, 0, 0, 1, 1)
 
-        self.btn_quest_2 = QPushButton(self.widget)
+        self.btn_quest_2 = QPushButton(self.layoutWidget)
         self.btn_quest_2.setObjectName(u"btn_quest_2")
         self.btn_quest_2.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_2, 0, 1, 1, 1)
 
-        self.btn_quest_3 = QPushButton(self.widget)
+        self.btn_quest_3 = QPushButton(self.layoutWidget)
         self.btn_quest_3.setObjectName(u"btn_quest_3")
         self.btn_quest_3.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_3, 0, 2, 1, 1)
 
-        self.btn_quest_4 = QPushButton(self.widget)
+        self.btn_quest_4 = QPushButton(self.layoutWidget)
         self.btn_quest_4.setObjectName(u"btn_quest_4")
         self.btn_quest_4.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_4, 0, 3, 1, 1)
 
-        self.btn_quest_5 = QPushButton(self.widget)
+        self.btn_quest_5 = QPushButton(self.layoutWidget)
         self.btn_quest_5.setObjectName(u"btn_quest_5")
         self.btn_quest_5.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_5, 1, 0, 1, 1)
 
-        self.btn_quest_6 = QPushButton(self.widget)
+        self.btn_quest_6 = QPushButton(self.layoutWidget)
         self.btn_quest_6.setObjectName(u"btn_quest_6")
         self.btn_quest_6.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_6, 1, 1, 1, 1)
 
-        self.btn_quest_7 = QPushButton(self.widget)
+        self.btn_quest_7 = QPushButton(self.layoutWidget)
         self.btn_quest_7.setObjectName(u"btn_quest_7")
         self.btn_quest_7.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_7, 1, 2, 1, 1)
 
-        self.btn_quest_8 = QPushButton(self.widget)
+        self.btn_quest_8 = QPushButton(self.layoutWidget)
         self.btn_quest_8.setObjectName(u"btn_quest_8")
         self.btn_quest_8.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_8, 1, 3, 1, 1)
 
-        self.btn_quest_9 = QPushButton(self.widget)
+        self.btn_quest_9 = QPushButton(self.layoutWidget)
         self.btn_quest_9.setObjectName(u"btn_quest_9")
         self.btn_quest_9.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_9, 2, 0, 1, 1)
 
-        self.btn_quest_10 = QPushButton(self.widget)
+        self.btn_quest_10 = QPushButton(self.layoutWidget)
         self.btn_quest_10.setObjectName(u"btn_quest_10")
         self.btn_quest_10.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_10, 2, 1, 1, 1)
 
-        self.btn_quest_11 = QPushButton(self.widget)
+        self.btn_quest_11 = QPushButton(self.layoutWidget)
         self.btn_quest_11.setObjectName(u"btn_quest_11")
         self.btn_quest_11.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_11, 2, 2, 1, 1)
 
-        self.btn_quest_12 = QPushButton(self.widget)
+        self.btn_quest_12 = QPushButton(self.layoutWidget)
         self.btn_quest_12.setObjectName(u"btn_quest_12")
         self.btn_quest_12.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_12, 2, 3, 1, 1)
 
-        self.btn_quest_13 = QPushButton(self.widget)
+        self.btn_quest_13 = QPushButton(self.layoutWidget)
         self.btn_quest_13.setObjectName(u"btn_quest_13")
         self.btn_quest_13.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_13, 3, 0, 1, 1)
 
-        self.btn_quest_14 = QPushButton(self.widget)
+        self.btn_quest_14 = QPushButton(self.layoutWidget)
         self.btn_quest_14.setObjectName(u"btn_quest_14")
         self.btn_quest_14.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_14, 3, 1, 1, 1)
 
-        self.btn_quest_15 = QPushButton(self.widget)
+        self.btn_quest_15 = QPushButton(self.layoutWidget)
         self.btn_quest_15.setObjectName(u"btn_quest_15")
         self.btn_quest_15.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_15, 3, 2, 1, 1)
 
-        self.btn_quest_16 = QPushButton(self.widget)
+        self.btn_quest_16 = QPushButton(self.layoutWidget)
         self.btn_quest_16.setObjectName(u"btn_quest_16")
         self.btn_quest_16.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_16, 3, 3, 1, 1)
 
-        self.btn_quest_17 = QPushButton(self.widget)
+        self.btn_quest_17 = QPushButton(self.layoutWidget)
         self.btn_quest_17.setObjectName(u"btn_quest_17")
         self.btn_quest_17.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_17, 4, 0, 1, 1)
 
-        self.btn_quest_18 = QPushButton(self.widget)
+        self.btn_quest_18 = QPushButton(self.layoutWidget)
         self.btn_quest_18.setObjectName(u"btn_quest_18")
         self.btn_quest_18.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_18, 4, 1, 1, 1)
 
-        self.btn_quest_19 = QPushButton(self.widget)
+        self.btn_quest_19 = QPushButton(self.layoutWidget)
         self.btn_quest_19.setObjectName(u"btn_quest_19")
         self.btn_quest_19.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_19, 4, 2, 1, 1)
 
-        self.btn_quest_20 = QPushButton(self.widget)
+        self.btn_quest_20 = QPushButton(self.layoutWidget)
         self.btn_quest_20.setObjectName(u"btn_quest_20")
         self.btn_quest_20.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_20, 4, 3, 1, 1)
 
-        self.btn_quest_21 = QPushButton(self.widget)
+        self.btn_quest_21 = QPushButton(self.layoutWidget)
         self.btn_quest_21.setObjectName(u"btn_quest_21")
         self.btn_quest_21.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_21, 5, 0, 1, 1)
 
-        self.btn_quest_22 = QPushButton(self.widget)
+        self.btn_quest_22 = QPushButton(self.layoutWidget)
         self.btn_quest_22.setObjectName(u"btn_quest_22")
         self.btn_quest_22.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_22, 5, 1, 1, 1)
 
-        self.btn_quest_23 = QPushButton(self.widget)
+        self.btn_quest_23 = QPushButton(self.layoutWidget)
         self.btn_quest_23.setObjectName(u"btn_quest_23")
         self.btn_quest_23.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_23, 5, 2, 1, 1)
 
-        self.btn_quest_24 = QPushButton(self.widget)
+        self.btn_quest_24 = QPushButton(self.layoutWidget)
         self.btn_quest_24.setObjectName(u"btn_quest_24")
         self.btn_quest_24.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_24, 5, 3, 1, 1)
 
-        self.btn_quest_25 = QPushButton(self.widget)
+        self.btn_quest_25 = QPushButton(self.layoutWidget)
         self.btn_quest_25.setObjectName(u"btn_quest_25")
         self.btn_quest_25.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_25, 6, 0, 1, 1)
 
-        self.btn_quest_26 = QPushButton(self.widget)
+        self.btn_quest_26 = QPushButton(self.layoutWidget)
         self.btn_quest_26.setObjectName(u"btn_quest_26")
         self.btn_quest_26.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_26, 6, 1, 1, 1)
 
-        self.btn_quest_27 = QPushButton(self.widget)
+        self.btn_quest_27 = QPushButton(self.layoutWidget)
         self.btn_quest_27.setObjectName(u"btn_quest_27")
         self.btn_quest_27.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_27, 6, 2, 1, 1)
 
-        self.btn_quest_28 = QPushButton(self.widget)
+        self.btn_quest_28 = QPushButton(self.layoutWidget)
         self.btn_quest_28.setObjectName(u"btn_quest_28")
         self.btn_quest_28.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_28, 6, 3, 1, 1)
 
-        self.btn_quest_29 = QPushButton(self.widget)
+        self.btn_quest_29 = QPushButton(self.layoutWidget)
         self.btn_quest_29.setObjectName(u"btn_quest_29")
         self.btn_quest_29.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_29, 7, 0, 1, 1)
 
-        self.btn_quest_30 = QPushButton(self.widget)
+        self.btn_quest_30 = QPushButton(self.layoutWidget)
         self.btn_quest_30.setObjectName(u"btn_quest_30")
         self.btn_quest_30.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_30, 7, 1, 1, 1)
 
-        self.btn_quest_31 = QPushButton(self.widget)
+        self.btn_quest_31 = QPushButton(self.layoutWidget)
         self.btn_quest_31.setObjectName(u"btn_quest_31")
         self.btn_quest_31.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_31, 7, 2, 1, 1)
 
-        self.btn_quest_32 = QPushButton(self.widget)
+        self.btn_quest_32 = QPushButton(self.layoutWidget)
         self.btn_quest_32.setObjectName(u"btn_quest_32")
         self.btn_quest_32.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_32, 7, 3, 1, 1)
 
-        self.btn_quest_33 = QPushButton(self.widget)
+        self.btn_quest_33 = QPushButton(self.layoutWidget)
         self.btn_quest_33.setObjectName(u"btn_quest_33")
         self.btn_quest_33.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_33, 8, 0, 1, 1)
 
-        self.btn_quest_34 = QPushButton(self.widget)
+        self.btn_quest_34 = QPushButton(self.layoutWidget)
         self.btn_quest_34.setObjectName(u"btn_quest_34")
         self.btn_quest_34.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_34, 8, 1, 1, 1)
 
-        self.btn_quest_35 = QPushButton(self.widget)
+        self.btn_quest_35 = QPushButton(self.layoutWidget)
         self.btn_quest_35.setObjectName(u"btn_quest_35")
         self.btn_quest_35.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_35, 8, 2, 1, 1)
 
-        self.btn_quest_36 = QPushButton(self.widget)
+        self.btn_quest_36 = QPushButton(self.layoutWidget)
         self.btn_quest_36.setObjectName(u"btn_quest_36")
         self.btn_quest_36.setMinimumSize(QSize(60, 60))
 
         self.gridLayout.addWidget(self.btn_quest_36, 8, 3, 1, 1)
 
-        self.btn_quest_37 = QPushButton(self.widget)
+        self.btn_quest_37 = QPushButton(self.layoutWidget)
         self.btn_quest_37.setObjectName(u"btn_quest_37")
         self.btn_quest_37.setMinimumSize(QSize(60, 60))
 
