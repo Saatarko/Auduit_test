@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'add_test.ui'
+## Form generated from reading UI file 'test.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.0
 ##
@@ -15,36 +15,47 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDialog,
-    QGridLayout, QLabel, QLineEdit, QPushButton,
-    QSizePolicy, QTextEdit, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDialog, QGridLayout,
+    QLabel, QLineEdit, QListWidget, QListWidgetItem,
+    QPushButton, QSizePolicy, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(997, 756)
-        Dialog.setStyleSheet(u"QPushButton {\n"
-"    background-color: lightgray; /* \u0426\u0432\u0435\u0442 \u0444\u043e\u043d\u0430 \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border: 2px solid red; /* \u0426\u0432\u0435\u0442 \u0440\u0430\u043c\u043a\u0438 \u043f\u0440\u0438 \u043d\u0430\u0436\u0430\u0442\u0438\u0438 */\n"
-"	border-radius: 5px; /* \u0417\u0430\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0438\u0435 \u0443\u0433\u043b\u043e\u0432 \u0440\u0430\u043c\u043a\u0438 */\n"
-"    background-color: lightgreen; /* \u0426\u0432\u0435\u0442 \u0444\u043e\u043d\u0430 \u043f\u0440\u0438 \u043d\u0430\u0436\u0430\u0442\u0438\u0438 */\n"
-"}\n"
-"QPushButton:focus {\n"
-"      border: 2px solid red; /* \u0426\u0432\u0435\u0442 \u0440\u0430\u043c\u043a\u0438 \u043f\u0440\u0438 \u043d\u0430\u0436\u0430\u0442\u0438\u0438 */\n"
-"}")
+        Dialog.resize(1088, 727)
+        self.list_answer_c = QListWidget(Dialog)
+        self.list_answer_c.setObjectName(u"list_answer_c")
+        self.list_answer_c.setGeometry(QRect(440, 500, 281, 121))
+        self.list_answer_c.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.list_answer_c.setWordWrap(True)
+        self.list_answer_a = QListWidget(Dialog)
+        self.list_answer_a.setObjectName(u"list_answer_a")
+        self.list_answer_a.setGeometry(QRect(440, 290, 281, 121))
+        self.list_answer_a.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.list_answer_a.setWordWrap(True)
+        self.checkBox_answer_d = QCheckBox(Dialog)
+        self.checkBox_answer_d.setObjectName(u"checkBox_answer_d")
+        self.checkBox_answer_d.setGeometry(QRect(860, 640, 79, 20))
+        self.list_quest_test = QListWidget(Dialog)
+        self.list_quest_test.setObjectName(u"list_quest_test")
+        self.list_quest_test.setGeometry(QRect(440, 90, 591, 161))
+        self.list_quest_test.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.list_quest_test.setWordWrap(True)
+        self.list_answer_d = QListWidget(Dialog)
+        self.list_answer_d.setObjectName(u"list_answer_d")
+        self.list_answer_d.setGeometry(QRect(750, 500, 281, 121))
+        self.list_answer_d.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.list_answer_d.setWordWrap(True)
+        self.checkBox_answer_c = QCheckBox(Dialog)
+        self.checkBox_answer_c.setObjectName(u"checkBox_answer_c")
+        self.checkBox_answer_c.setGeometry(QRect(540, 630, 79, 20))
         self.checkBox_answer_b = QCheckBox(Dialog)
         self.checkBox_answer_b.setObjectName(u"checkBox_answer_b")
-        self.checkBox_answer_b.setGeometry(QRect(800, 460, 79, 20))
-        self.btn_accept_answer = QPushButton(Dialog)
-        self.btn_accept_answer.setObjectName(u"btn_accept_answer")
-        self.btn_accept_answer.setGeometry(QRect(590, 680, 271, 51))
+        self.checkBox_answer_b.setGeometry(QRect(840, 430, 79, 20))
         self.layoutWidget = QWidget(Dialog)
         self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(10, 60, 401, 590))
+        self.layoutWidget.setGeometry(QRect(20, 20, 401, 590))
         self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -270,73 +281,53 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.btn_quest_37, 8, 4, 1, 1)
 
-        self.checkBox_answer_c = QCheckBox(Dialog)
-        self.checkBox_answer_c.setObjectName(u"checkBox_answer_c")
-        self.checkBox_answer_c.setGeometry(QRect(530, 640, 79, 20))
         self.checkBox_answer_a = QCheckBox(Dialog)
         self.checkBox_answer_a.setObjectName(u"checkBox_answer_a")
-        self.checkBox_answer_a.setGeometry(QRect(530, 460, 79, 20))
-        self.checkBox_answer_d = QCheckBox(Dialog)
-        self.checkBox_answer_d.setObjectName(u"checkBox_answer_d")
-        self.checkBox_answer_d.setGeometry(QRect(800, 640, 79, 20))
+        self.checkBox_answer_a.setGeometry(QRect(550, 420, 79, 20))
+        self.list_answer_b = QListWidget(Dialog)
+        self.list_answer_b.setObjectName(u"list_answer_b")
+        self.list_answer_b.setGeometry(QRect(750, 290, 281, 121))
+        self.list_answer_b.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.list_answer_b.setWordWrap(True)
+        self.btn_accept_answer = QPushButton(Dialog)
+        self.btn_accept_answer.setObjectName(u"btn_accept_answer")
+        self.btn_accept_answer.setGeometry(QRect(590, 670, 271, 51))
         self.label = QLabel(Dialog)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 10, 401, 41))
+        self.label.setGeometry(QRect(440, 50, 181, 16))
         font = QFont()
         font.setPointSize(12)
         self.label.setFont(font)
-        self.pushButton = QPushButton(Dialog)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(20, 690, 391, 51))
-        self.text_quest = QTextEdit(Dialog)
-        self.text_quest.setObjectName(u"text_quest")
-        self.text_quest.setGeometry(QRect(450, 140, 531, 161))
-        self.text_answer_a = QTextEdit(Dialog)
-        self.text_answer_a.setObjectName(u"text_answer_a")
-        self.text_answer_a.setGeometry(QRect(450, 340, 251, 111))
-        self.text_answer_b = QTextEdit(Dialog)
-        self.text_answer_b.setObjectName(u"text_answer_b")
-        self.text_answer_b.setGeometry(QRect(720, 340, 261, 111))
-        self.text_answer_c = QTextEdit(Dialog)
-        self.text_answer_c.setObjectName(u"text_answer_c")
-        self.text_answer_c.setGeometry(QRect(450, 520, 251, 91))
-        self.text_answer_d = QTextEdit(Dialog)
-        self.text_answer_d.setObjectName(u"text_answer_d")
-        self.text_answer_d.setGeometry(QRect(720, 520, 261, 91))
-        self.comboBox_theme = QComboBox(Dialog)
-        self.comboBox_theme.setObjectName(u"comboBox_theme")
-        self.comboBox_theme.setGeometry(QRect(450, 90, 531, 22))
         self.label_2 = QLabel(Dialog)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(450, 30, 131, 16))
-        self.label_2.setFont(font)
-        self.list_test_name = QLineEdit(Dialog)
-        self.list_test_name.setObjectName(u"list_test_name")
-        self.list_test_name.setGeometry(QRect(610, 30, 113, 22))
+        self.label_2.setGeometry(QRect(550, 270, 49, 16))
+        font1 = QFont()
+        font1.setPointSize(10)
+        self.label_2.setFont(font1)
         self.label_3 = QLabel(Dialog)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(550, 310, 61, 16))
-        self.label_3.setFont(font)
+        self.label_3.setGeometry(QRect(860, 270, 49, 16))
+        self.label_3.setFont(font1)
         self.label_4 = QLabel(Dialog)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(830, 310, 61, 16))
-        self.label_4.setFont(font)
+        self.label_4.setGeometry(QRect(550, 470, 49, 16))
+        self.label_4.setFont(font1)
         self.label_5 = QLabel(Dialog)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(550, 500, 61, 16))
-        self.label_5.setFont(font)
+        self.label_5.setGeometry(QRect(860, 470, 49, 16))
+        self.label_5.setFont(font1)
         self.label_6 = QLabel(Dialog)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(820, 500, 61, 16))
-        self.label_6.setFont(font)
-        self.label_7 = QLabel(Dialog)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(450, 60, 131, 16))
-        self.label_7.setFont(font)
-        self.label_8 = QLabel(Dialog)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(450, 120, 131, 16))
-        self.label_8.setFont(font)
+        self.label_6.setGeometry(QRect(20, 620, 381, 101))
+        self.line_test = QLineEdit(Dialog)
+        self.line_test.setObjectName(u"line_test")
+        self.line_test.setGeometry(QRect(1020, 20, 61, 22))
+        self.line_fio = QLineEdit(Dialog)
+        self.line_fio.setObjectName(u"line_fio")
+        self.line_fio.setGeometry(QRect(1020, 50, 61, 22))
+        self.btn_end_test = QPushButton(Dialog)
+        self.btn_end_test.setObjectName(u"btn_end_test")
+        self.btn_end_test.setGeometry(QRect(630, 10, 271, 24))
 
         self.retranslateUi(Dialog)
 
@@ -345,8 +336,9 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+        self.checkBox_answer_d.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
+        self.checkBox_answer_c.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
         self.checkBox_answer_b.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
-        self.btn_accept_answer.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432\u043e\u043f\u0440\u043e\u0441 \u0441 \u043e\u0442\u0432\u0435\u0442\u0430\u043c\u0438", None))
         self.btn_quest_1.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 1", None))
         self.btn_quest_2.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 2", None))
         self.btn_quest_3.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 3", None))
@@ -384,17 +376,31 @@ class Ui_Dialog(object):
         self.btn_quest_35.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 35", None))
         self.btn_quest_36.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 36", None))
         self.btn_quest_37.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 37", None))
-        self.checkBox_answer_c.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
         self.checkBox_answer_a.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
-        self.checkBox_answer_d.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
-        self.label.setText(QCoreApplication.translate("Dialog", u"\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0433\u043e \u0442\u0435\u0441\u0442\u0430/\u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435", None))
-        self.pushButton.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0442\u0435\u0441\u0442", None))
-        self.label_2.setText(QCoreApplication.translate("Dialog", u"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u0441\u0442\u0430", None))
-        self.label_3.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0430", None))
-        self.label_4.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 b", None))
-        self.label_5.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 c", None))
-        self.label_6.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 d", None))
-        self.label_7.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u043c\u0430 \u0432\u043e\u043f\u0440\u043e\u0441\u0430", None))
-        self.label_8.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u043a\u0441\u0442 \u0432\u043e\u043f\u0440\u043e\u0441\u0430", None))
+        self.btn_accept_answer.setText(QCoreApplication.translate("Dialog", u"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043e\u0442\u0432\u0435\u0442\u044b", None))
+        self.label.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u043a\u0441\u0442 \u0432\u043e\u043f\u0440\u043e\u0441\u0430", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0430", None))
+        self.label_3.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0431", None))
+        self.label_4.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 c", None))
+        self.label_5.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 d", None))
+        self.label_6.setText(QCoreApplication.translate("Dialog", u"<html>\n"
+"<head/>\n"
+"<body>\n"
+"    <p align=\"justify\" style=\"line-height: 1.0;\">\n"
+"        \u0412\u043e\u043f\u0440\u043e\u0441 \u043d\u0430 \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0412\u044b \u043e\u0442\u0432\u0435\u0447\u0430\u0435\u0442\u0435 \u0432\u044b\u0434\u0435\u043b\u044f\u0435\u0442\u0441\u044f \u043a\u0440\u0430\u0441\u043d\u043e\u0439 \u0440\u0430\u043c\u043a\u043e\u0439.\n"
+"    </p>\n"
+"    <p align=\"justify\" style=\"line-height: 1.0;\">\n"
+"        \u0412\u043e\u043f\u0440\u043e\u0441 \u043d\u0430 \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0412\u044b \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u043b\u0438 \u043e\u0442\u0432\u0435\u0442\u044b \u0432\u044b\u0434\u0435\u043b\u044f\u044e\u0442\u0441\u044f\n"
+"    </p>\n"
+"    <p align=\"justify\" style=\"line-height: 1.0;\">\n"
+"        \u0437\u0435\u043b\u0435\u043d\u044b\u043c \u0446\u0432\u0435\u0442\u043e\u043c. \u0415\u0441\u043b\u0438 \u0432\u044b \u043f\u0435\u0440\u0435\u0439\u0434\u0435\u0442\u0435 \u043d\u0430"
+                        " \u0434\u0440\u0443\u0433\u043e\u0439 \u0432\u043e\u043f\u0440\u043e\u0441 \u043d\u0435\n"
+"    </p>\n"
+"    <p align=\"justify\" style=\"line-height: 1.0;\">\n"
+"        \u043d\u0430\u0436\u0430\u0432 \u043a\u043d\u043e\u043f\u043a\u0443 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f \u0412\u0430\u0448\u0438 \u0432\u044b\u0431\u043e\u0440\u044b \u043d\u0435 \u0441\u043e\u0445\u0440\u0430\u043d\u044f\u0442\u0441\u044f.\n"
+"    </p>\n"
+"</body>\n"
+"</html>", None))
+        self.btn_end_test.setText(QCoreApplication.translate("Dialog", u"\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0442\u0435\u0441\u0442", None))
     # retranslateUi
 

@@ -4,3 +4,6 @@ pyside6-uic temp_ui/pass.ui -o window/password.py
 pyside6-uic temp_ui/add_test.ui -o window/add_test.py
 pyside6-uic temp_ui/create_test_menu.ui -o window/create_test_menu.py
 pyside6-uic temp_ui/list_test.ui -o window/list_test.py
+pyside6-uic temp_ui/list_applicant.ui -o window/list_applicant.py
+pyside6-uic temp_ui/test.ui -o window/test.py
+pyside6-uic temp_ui/applicant.ui -o window/applicant.py

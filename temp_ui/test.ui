@@ -6,32 +6,50 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>997</width>
-    <height>756</height>
+    <width>1088</width>
+    <height>727</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QPushButton {
-    background-color: lightgray; /* Цвет фона по умолчанию */
-}
-
-QPushButton:pressed {
-    border: 2px solid red; /* Цвет рамки при нажатии */
-	border-radius: 5px; /* Закругление углов рамки */
-    background-color: lightgreen; /* Цвет фона при нажатии */
-}
-QPushButton:focus {
-      border: 2px solid red; /* Цвет рамки при нажатии */
-}</string>
-  </property>
-  <widget class="QCheckBox" name="checkBox_answer_b">
+  <widget class="QListWidget" name="list_answer_c">
    <property name="geometry">
     <rect>
-     <x>800</x>
-     <y>460</y>
+     <x>440</x>
+     <y>500</y>
+     <width>281</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list_answer_a">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>290</y>
+     <width>281</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_answer_d">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>640</y>
      <width>79</width>
      <height>20</height>
     </rect>
@@ -40,24 +58,69 @@ QPushButton:focus {
     <string>CheckBox</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btn_accept_answer">
+  <widget class="QListWidget" name="list_quest_test">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>680</y>
-     <width>271</width>
-     <height>51</height>
+     <x>440</x>
+     <y>90</y>
+     <width>591</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list_answer_d">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>500</y>
+     <width>281</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_answer_c">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>630</y>
+     <width>79</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Сохранить вопрос с ответами</string>
+    <string>CheckBox</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_answer_b">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>430</y>
+     <width>79</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CheckBox</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>60</y>
+     <x>20</x>
+     <y>20</y>
      <width>401</width>
      <height>590</height>
     </rect>
@@ -546,24 +609,11 @@ QPushButton:focus {
     </item>
    </layout>
   </widget>
-  <widget class="QCheckBox" name="checkBox_answer_c">
-   <property name="geometry">
-    <rect>
-     <x>530</x>
-     <y>640</y>
-     <width>79</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>CheckBox</string>
-   </property>
-  </widget>
   <widget class="QCheckBox" name="checkBox_answer_a">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>460</y>
+     <x>550</x>
+     <y>420</y>
      <width>79</width>
      <height>20</height>
     </rect>
@@ -572,234 +622,41 @@ QPushButton:focus {
     <string>CheckBox</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox_answer_d">
+  <widget class="QListWidget" name="list_answer_b">
    <property name="geometry">
     <rect>
-     <x>800</x>
-     <y>640</y>
-     <width>79</width>
-     <height>20</height>
+     <x>750</x>
+     <y>290</y>
+     <width>281</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_accept_answer">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>670</y>
+     <width>271</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
-    <string>CheckBox</string>
+    <string>Подтвердить выбранные ответы</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>401</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Добавление нового теста/изменение</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>690</y>
-     <width>391</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Сохранить тест</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="text_quest">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>140</y>
-     <width>531</width>
-     <height>161</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="text_answer_a">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>340</y>
-     <width>251</width>
-     <height>111</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="text_answer_b">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>340</y>
-     <width>261</width>
-     <height>111</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="text_answer_c">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>520</y>
-     <width>251</width>
-     <height>91</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="text_answer_d">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>520</y>
-     <width>261</width>
-     <height>91</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBox_theme">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>90</y>
-     <width>531</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>30</y>
-     <width>131</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Название теста</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="list_test_name">
-   <property name="geometry">
-    <rect>
-     <x>610</x>
-     <y>30</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>550</x>
-     <y>310</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Ответ а</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>830</x>
-     <y>310</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Ответ b</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>550</x>
-     <y>500</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Ответ c</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>820</x>
-     <y>500</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Ответ d</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>60</y>
-     <width>131</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Тема вопроса</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>120</y>
-     <width>131</width>
+     <x>440</x>
+     <y>50</y>
+     <width>181</width>
      <height>16</height>
     </rect>
    </property>
@@ -810,6 +667,140 @@ QPushButton:focus {
    </property>
    <property name="text">
     <string>Текст вопроса</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>270</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ответ а</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>270</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ответ б</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>470</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ответ c</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>470</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ответ d</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>620</y>
+     <width>381</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
+        Вопрос на который Вы отвечаете выделяется красной рамкой.
+    &lt;/p&gt;
+    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
+        Вопрос на которые Вы подтвердили ответы выделяются
+    &lt;/p&gt;
+    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
+        зеленым цветом. Если вы перейдете на другой вопрос не
+    &lt;/p&gt;
+    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
+        нажав кнопку сохранения Ваши выборы не сохранятся.
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="line_test">
+   <property name="geometry">
+    <rect>
+     <x>1020</x>
+     <y>20</y>
+     <width>61</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="line_fio">
+   <property name="geometry">
+    <rect>
+     <x>1020</x>
+     <y>50</y>
+     <width>61</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_end_test">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>10</y>
+     <width>271</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Завершить тест</string>
    </property>
   </widget>
  </widget>

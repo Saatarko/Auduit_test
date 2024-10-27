@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Boolean
+from datetime import datetime, timezone
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Boolean, DateTime
 from sqlalchemy.orm import relationship
 
 from .config import Base
@@ -34,6 +35,7 @@ class Questions(Base):
     test = relationship('Tests', back_populates='questions')
     thema = relationship('Themas', back_populates='questions')
     answers = relationship('Answer', back_populates='question')
+    applicant_answers = relationship('ApplicantAnswer', back_populates='question')
 
 
 class Answer(Base):
@@ -46,7 +48,7 @@ class Answer(Base):
     id_answer_quest = Column(Integer, ForeignKey('questions.id_quest'))
 
     question = relationship('Questions', back_populates='answers')
-    applicant_answers = relationship('ApplicantAnswer', back_populates='answer')
+
 
 
 class Applicant(Base):
@@ -54,6 +56,9 @@ class Applicant(Base):
 
     id_applicant = Column(Integer, primary_key=True)
     fio = Column(Text)
+
+    #  столбец для даты
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     id_applicant_test = Column(Integer, ForeignKey('tests.id_test'))
 
@@ -69,7 +74,7 @@ class ApplicantAnswer(Base):
     time_spent = Column(Integer)
 
     id_applicantanswer_applicant = Column(Integer, ForeignKey('applicant.id_applicant'))
-    id_applicantanswer_answer = Column(Integer, ForeignKey('answer.id_answer'))
+    id_applicantanswer_questions = Column(Integer, ForeignKey('questions.id_quest'))
 
     applicant = relationship('Applicant', back_populates='answers')
-    answer = relationship('Answer', back_populates='applicant_answers')
+    question = relationship('Questions', back_populates='applicant_answers')

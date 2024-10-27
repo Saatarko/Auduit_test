@@ -17,10 +17,15 @@
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>50</y>
+     <y>20</y>
      <width>49</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Меню</string>
@@ -30,10 +35,15 @@
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>90</y>
+     <y>100</y>
      <width>121</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Список тестов</string>
@@ -43,13 +53,36 @@
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>150</y>
+     <y>50</y>
      <width>121</width>
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Добавить тест</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_list_applicant">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>150</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Список соискателей</string>
    </property>
   </widget>
  </widget>
