@@ -7,3 +7,5 @@ pyside6-uic temp_ui/list_test.ui -o window/list_test.py
 pyside6-uic temp_ui/list_applicant.ui -o window/list_applicant.py
 pyside6-uic temp_ui/test.ui -o window/test.py
 pyside6-uic temp_ui/applicant.ui -o window/applicant.py
+pyside6-uic temp_ui/mid_menu_test.ui -o window/mid_menu_test.py
+pyside6-uic temp_ui/mid_menu_applicant.ui -o window/mid_menu_applicant.py

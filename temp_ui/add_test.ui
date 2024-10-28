@@ -812,6 +812,19 @@ QPushButton:focus {
     <string>Текст вопроса</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_exit">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>30</y>
+     <width>181</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Назад в меню</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

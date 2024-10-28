@@ -337,6 +337,9 @@ class Ui_Dialog(object):
         self.label_8.setObjectName(u"label_8")
         self.label_8.setGeometry(QRect(450, 120, 131, 16))
         self.label_8.setFont(font)
+        self.btn_exit = QPushButton(Dialog)
+        self.btn_exit.setObjectName(u"btn_exit")
+        self.btn_exit.setGeometry(QRect(770, 30, 181, 24))
 
         self.retranslateUi(Dialog)
 
@@ -396,5 +399,6 @@ class Ui_Dialog(object):
         self.label_6.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 d", None))
         self.label_7.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u043c\u0430 \u0432\u043e\u043f\u0440\u043e\u0441\u0430", None))
         self.label_8.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u043a\u0441\u0442 \u0432\u043e\u043f\u0440\u043e\u0441\u0430", None))
+        self.btn_exit.setText(QCoreApplication.translate("Dialog", u"\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e", None))
     # retranslateUi
 
