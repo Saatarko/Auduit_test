@@ -1,11 +1,10 @@
-import os
 import random
 import sys
 
-import PySide6
+
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import QMainWindow, QApplication, QDialog, QMessageBox, QListWidgetItem, QLabel, QTableWidgetItem
+from PySide6.QtWidgets import QMainWindow, QApplication, QDialog, QMessageBox, QListWidgetItem, QTableWidgetItem
 
 from window.mainwindow import Ui_MainWindow
 from window.password import Ui_Dialog
@@ -66,6 +65,11 @@ class Mainwindow(QMainWindow):
 
         # Привязываем нажатие кнопки к функции открытия новой формы
         self.ui.btn_go_menu.clicked.connect(self.open_pass_dialog)
+        self.ui.btnclose.clicked.connect(self.close_current_window)
+
+    def close_current_window(self):
+
+        self.close()
 
     def prepare_test(self):
 
@@ -538,12 +542,12 @@ class EditTestDialog(QDialog):
 
     def highlight_button_red(self, question_number):
         """Добавляет красную рамку к кнопке."""
-        button = getattr(self.ui, f"btn_quest_{question_number}")
+        getattr(self.ui, f"btn_quest_{question_number}")
         # button.setStyleSheet("border: 2px solid red;")
 
     def highlight_button_green(self, question_number):
         """Изменяет фон кнопки на светло-зелёный."""
-        button = getattr(self.ui, f"btn_quest_{question_number}")
+        getattr(self.ui, f"btn_quest_{question_number}")
         # button.setStyleSheet("background-color: lightgreen;")
 
     def load_themes_into_combobox(self):
@@ -763,7 +767,7 @@ class Testing(QDialog):
                 id_applicantanswer_questions=question_number
             )
 
-            app_answers = DatabaseHelper.get_application_answer_is_correct
+            DatabaseHelper.get_application_answer_is_correct
             # Сохраняем потраченное время на предыдущий вопрос
             if self.selected_question_number is not None:
                 DatabaseHelper.presave_applicant_answer(

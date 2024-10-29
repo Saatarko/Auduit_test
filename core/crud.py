@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QMessageBox
 from sqlalchemy import desc
-from sqlalchemy.orm import joinedload, contains_eager
+from sqlalchemy.orm import joinedload
 
 from .config import Base, engine, SessionLocal
 from .models import Tests, Questions, Themas, Answer, Applicant, ApplicantAnswer
