@@ -58,6 +58,9 @@ class Mainwindow(QMainWindow):
 
         DatabaseHelper.create_table()
 
+        if self.menu_dialog is not None:
+            self.menu_dialog.accept()  # Закрываем текущее окно
+
         # Привязываем нажатие кнопки к подготовке теста
         self.ui.btnstart_test.clicked.connect(self.prepare_test)
 
@@ -82,6 +85,21 @@ class Mainwindow(QMainWindow):
 
     def open_test(self, fio: str):
         # Здесь создаем объект формы прохождения теста
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setWindowTitle("Внимание")
+        msg.setText("Для прохождения теста Вам необходимо ответить на 37 вопросов."
+                    "Отвечать можно в любом порядке. Для этого вы нажимаете на соответствующий "
+                    "вопрос. Оно отобразится в окне справа. Под вопросом будут варианты ответа. "
+                    "Вам нужно выбрать правильный вариант (правильных ответов может быть несколько). "
+                    "Если вы уверены в своем выборе нажимайте на кнопку сохранить ответ. Отвеченный"
+                    "вопрос выделяется зеленым цветом, но даже в этом случае, если Вы засомневались в ответе "
+                    "и хоите его поменять, то Вы можете поменять свой ответ и снова нажать на кнопку сохранить. "
+                    "Если вопрос Вам кажется сложным, то Вы можете перейти к любому другому вопросу,а к этому вернуться позднее. "
+                    "Когда Вы ответите на все вопросы или решите, что на какие-то вопросы вы не хотите отвечать -  "
+                    "нажмите на кнопку завершить тест.")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec()
         test_dialog = Testing(fio)
         test_dialog.exec()  # Открываем диалог
 
@@ -130,11 +148,11 @@ class Mainwindow(QMainWindow):
         self.menu_ui.btn_addtest.clicked.connect(self.open_add_test)
         self.menu_ui.btn_list_test.clicked.connect(self.open_list_test)
         self.menu_ui.btn_list_applicant.clicked.connect(self.open_list_applicant)
+        self.menu_ui.btn_exit.clicked.connect(self.menu_dialog.reject)
 
         self.menu_dialog.exec()
 
     def open_list_applicant(self):
-
         if self.mid_menu_applicant_dialog is not None:
             self.mid_menu_applicant_dialog.accept()
 
@@ -155,17 +173,19 @@ class Mainwindow(QMainWindow):
             item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)  # Делаем элемент выделяемым и активным
             self.list_applicant_ui.list_applicant.addItem(item)
         else:
-
             for applicant in applicants:
                 fio = applicant.fio  # Получаем fio соискателя
                 created_at = applicant.created_at.strftime("%Y-%m-%d %H:%M:%S")  # Форматируем дату
                 item_text = f"{fio} - {created_at}"  # Формируем текст элемента
                 item = QListWidgetItem(item_text)  # Создаем элемент списка
+
+                # Устанавливаем applicant_id в качестве данных элемента
+                item.setData(Qt.UserRole, applicant.id_applicant)
+
                 item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)  # Делаем элемент выделяемым и активным
                 self.list_applicant_ui.list_applicant.addItem(item)  # Добавляем элемент в QListWidget
 
-        # кнопка возврата в меню
-
+        # Кнопка возврата в меню
         self.list_applicant_ui.btn_exit_to_menu.clicked.connect(self.open_menu)
 
         # Подключаем обработчик события двойного клика
@@ -174,9 +194,13 @@ class Mainwindow(QMainWindow):
         self.list_applicant_dialog.exec()
 
     def on_applicant_double_clicked(self, item):
-        # Получаем id теста из данных элемента
-        applican_id = item.data(Qt.UserRole)  # Извлекаем id
-        self.open_menu_applicant(applican_id)  # Открываем форму редактирования теста
+        # Получаем id соискателя из данных элемента
+        applicant_id = item.data(Qt.UserRole)  # Извлекаем id
+        if applicant_id is not None:
+            self.open_menu_applicant(applicant_id)  # Открываем форму редактирования соискателя
+        else:
+            QMessageBox.warning(self, "Ошибка", "ID соискателя не найден")
+
 
     def open_menu_applicant(self,applican_id):
         # закрываем спиоск
@@ -194,7 +218,7 @@ class Mainwindow(QMainWindow):
         self.mid_menu_applicant_ui.btn_open.clicked.connect(lambda: self.open_applicant(applican_id))
         self.mid_menu_applicant_ui.btn_delete.clicked.connect(lambda: self.delete_applicant(applican_id))
 
-        self.mid_menu_applicant_ui.exec()
+        self.mid_menu_applicant_dialog.exec()
 
 
     def delete_applicant(self, applicant_id):
@@ -227,45 +251,106 @@ class Mainwindow(QMainWindow):
         self.applicant_ui = Ui_Dialog_applicant()
         self.applicant_ui.setupUi(self.applicant_dialog)
 
-        applicant_data = DatabaseHelper.open_applicant_result(applicant_id)
+        # Получаем результаты тестирования соискателя
+        result_summary = DatabaseHelper.open_applicant_result(applicant_id)
 
-        if applicant_data:
-            self.applicant_ui.linefio.setText(applicant_data["fio"])
-            self.applicant_ui.line_test_name.setText(applicant_data["test_name"])
+        if result_summary:
+            # Заполнение полей формы
+            self.applicant_ui.linefio.setText(result_summary['fio'])
+            self.applicant_ui.line_test_name.setText(result_summary['test_name'])
 
-            # Выводим данные ответов соискателя в table_applicant_answer
-            self.applicant_ui.table_applicant_answer.setRowCount(len(applicant_data["applicant_answers"]))
-            for row, answer in enumerate(applicant_data["applicant_answers"]):
-                question_number = answer.question.id_quest  # Номер вопроса
-                is_correct = answer.is_correct  # Ответ соискателя
-                self.applicant_ui.table_applicant_answer.setItem(row, 0, QTableWidgetItem(str(question_number)))
-                self.applicant_ui.table_applicant_answer.setItem(row, 1,
-                                                                 QTableWidgetItem("Да" if is_correct else "Нет"))
+            total_questions = result_summary["total_questions_all"]
+            answered_questions = result_summary["answered_questions"]
+            correct_answers_percent = result_summary["correct_answers_percent"]
+            correct_answers_percent_all = result_summary["correct_answers_percent_all"]
+            time = (result_summary["time"])/60
 
-            # Выводим правильные ответы в table_correct_answer
-            correct_answers = DatabaseHelper.get_correct_answers_for_test(applicant_data["id_applicant_test"])
-            self.applicant_ui.table_correct_answer.setRowCount(len(correct_answers))
-            for row, correct_answer in enumerate(correct_answers):
-                question_number = correct_answer.question.id_quest  # Номер вопроса
-                is_correct = correct_answer.is_correct  # Правильный ответ
-                self.applicant_ui.table_correct_answer.setItem(row, 0, QTableWidgetItem(str(question_number)))
-                self.applicant_ui.table_correct_answer.setItem(row, 1, QTableWidgetItem("Да" if is_correct else "Нет"))
+            # Обновление list_result
+            self.applicant_ui.list_result.clear()  # Очищаем список перед добавлением новых результатов
+            answered_questions_text = f"Соискатель ответил на {answered_questions} из {total_questions} вопросов."
+            result_answered_text = f"Результат из учета отвеченных вопросов: {correct_answers_percent:.2f}%."
+            result_all_text = f"Общий результат: {correct_answers_percent_all:.2f}%."
+            all_time = f"Итоговое время составило: {time:.2f} минут."
 
-            # Формируем текстовое резюме
-            result_summary = applicant_data["result_summary"]
-            result_text = (
-                f"1. Отвечено на {result_summary['answered_questions']} из {result_summary['total_questions']} вопросов.\n"
-                f"2. Правильных ответов: {result_summary['correct_answers_percent']:.2f}%.\n"
-                "3. Знания по темам:\n"
+
+            # Добавляем строки в list_result
+            self.applicant_ui.list_result.addItem(answered_questions_text)
+            self.applicant_ui.list_result.addItem("")  # Пустая строка
+            self.applicant_ui.list_result.addItem(result_answered_text)
+            self.applicant_ui.list_result.addItem(result_all_text)
+            self.applicant_ui.list_result.addItem("")  # Пустая строка
+            self.applicant_ui.list_result.addItem(all_time)
+            self.applicant_ui.list_result.addItem("")  # Пустая строка
+
+            theme_results = result_summary.get("theme_results", [])
+            for theme_result in theme_results:
+                theme_text = f"Тема: {theme_result['theme_name']}, Результат: {theme_result['correct_percent']:.2f}%."
+                self.applicant_ui.list_result.addItem(theme_text)
+
+            # Настройка QTableWidget для ответов соискателя
+            self.applicant_ui.table_applicant_answer.setRowCount(6)  # 4 варианта ответа + 1 для времени
+            self.applicant_ui.table_applicant_answer.setColumnCount(37)  # 37 вопросов
+
+            # Установка заголовков для первого столбца
+            self.applicant_ui.table_applicant_answer.setVerticalHeaderLabels([
+                "Вопросы", "Ответ а", "Ответ b", "Ответ c", "Ответ d", "Затраченное время"
+            ])
+
+            # Установка заголовков для столбцов (например, вопросы 1-37)
+            self.applicant_ui.table_applicant_answer.setHorizontalHeaderLabels(
+                [str(i + 1) for i in range(37)]
             )
 
-            for theme in result_summary["themes"]:
-                result_text += f"   - {theme['theme_name']}: {theme['correct_percent']:.2f}%\n"
+            for question_index in range(37):
+                # Получаем ответы соискателя для текущего вопроса
+                answers_for_question = [answer for answer in result_summary['applicant_answers'] if
+                                        answer['question_id'] == question_index + 1]
 
-            # Устанавливаем текст в list_result
-            self.applicant_ui.list_result.setPlainText(result_text)
+                for answer_index in range(4):  # 4 строки для каждого варианта ответа
+                    if answer_index < len(answers_for_question):
+                        is_correct = answers_for_question[answer_index]['is_correct']
+                        self.applicant_ui.table_applicant_answer.setItem(answer_index + 1, question_index,
+                                                                         QTableWidgetItem(
+                                                                             "Да" if is_correct else "Нет"))
+                    else:
+                        self.applicant_ui.table_applicant_answer.setItem(answer_index + 1, question_index,
+                                                                         QTableWidgetItem(""))
 
-        self.applicant_dialog.exec_()
+                # Временные затраты (все варианты ответов имеют одинаковое время)
+                if answers_for_question:
+                    time_spent = answers_for_question[0]['time_spent']
+                    self.applicant_ui.table_applicant_answer.setItem(5, question_index,
+                                                                     QTableWidgetItem(str(time_spent)))
+
+            # Настройка QTableWidget для правильных ответов
+            self.applicant_ui.table_correct_answer.setRowCount(5)  # 4 варианта ответа + 1 для заголовков
+            self.applicant_ui.table_correct_answer.setColumnCount(37)  # 37 вопросов
+
+            # Установка заголовков для первого столбца
+            self.applicant_ui.table_correct_answer.setVerticalHeaderLabels([
+                "Вопросы", "Ответ а", "Ответ b", "Ответ c", "Ответ d"
+            ])
+
+            # Установка заголовков для столбцов (например, вопросы 1-37)
+            self.applicant_ui.table_correct_answer.setHorizontalHeaderLabels(
+                [str(i + 1) for i in range(37)]
+            )
+
+            for question_index in range(37):
+                correct_answers_for_question = [answer for answer in result_summary['correct_answers'] if
+                                                answer.question.id_quest == question_index + 1]
+
+                for answer_index in range(4):  # 4 строки для каждого варианта ответа
+                    if answer_index < len(correct_answers_for_question):
+                        is_correct = correct_answers_for_question[answer_index].is_correct
+                        self.applicant_ui.table_correct_answer.setItem(answer_index + 1, question_index,
+                                                                       QTableWidgetItem("Да" if is_correct else "Нет"))
+                    else:
+                        self.applicant_ui.table_correct_answer.setItem(answer_index + 1, question_index,
+                                                                       QTableWidgetItem(""))
+
+        # Отображение диалога
+        self.applicant_dialog.exec()
 
     def open_list_test(self):
 
@@ -583,6 +668,8 @@ class Testing(QDialog):
 
         self.selected_question_number = None
 
+
+
         # Получаем тест по ID
         tests = DatabaseHelper.get_all_tests()
 
@@ -607,7 +694,7 @@ class Testing(QDialog):
         question_ids = {question_id for question_id, _ in questions}  # Собираем id вопросов в множество
 
         # сразу создаем соискателя в базе
-        DatabaseHelper.add_applicant(self.fio)
+        DatabaseHelper.add_applicant(self.fio, self.random_test.id_test)
 
         self.applicant = DatabaseHelper.get_last_applicant()
 
@@ -619,6 +706,28 @@ class Testing(QDialog):
 
         # Подключаем кнопку сохранения
         self.ui.btn_accept_answer.clicked.connect(self.save_applicant_answer)
+
+        self.ui.btn_end_test.clicked.connect(lambda _, num=i: self.close_current_window(self.applicant.id_applicant))
+
+
+    def close_current_window(self, applicant_id):
+
+        result_summary = DatabaseHelper.open_applicant_result(applicant_id)
+
+        if result_summary:
+            total_questions = result_summary["total_questions_all"]
+            answered_questions = result_summary["answered_questions"]
+            correct_answers_percent = result_summary["correct_answers_percent"]
+            correct_answers_percent_all = result_summary["correct_answers_percent_all"]
+
+            answered_questions_text = f"Вы ответили на {answered_questions} из {total_questions} вопросов."
+            result_answered_text = f"Результат из учета отвеченных вопросов: {correct_answers_percent:.2f}%."
+            result_all_text = f"Общий результат: {correct_answers_percent_all:.2f}%."
+
+
+            QMessageBox.warning(self, "Результаты", f"Ваши результаты {answered_questions_text} {result_answered_text} {result_all_text}")
+
+        self.close()  # Закрывает текущее окно
 
     def update_time(self):
         """Увеличивает время на 1 секунду."""
@@ -634,12 +743,27 @@ class Testing(QDialog):
         )
 
         if not is_answered:
+
+            # Сохраняем потраченное время на предыдущий вопрос
+            if self.selected_question_number is not None:
+                DatabaseHelper.presave_applicant_answer(
+                    test_id=self.random_test.id_test,
+                    time_spent=self.time_spent,
+                    is_correct_a=False,
+                    is_correct_b=False,
+                    is_correct_c=False,
+                    is_correct_d=False,
+                    id_applicantanswer_applicant=self.applicant.id_applicant,
+                    id_applicantanswer_questions=self.selected_question_number
+                )
+        else:
             # Получаем уже сохраненное время на текущем вопросе, если оно есть
             timer = DatabaseHelper.get_timer(
                 id_applicantanswer_applicant=self.applicant.id_applicant,
                 id_applicantanswer_questions=question_number
             )
 
+            app_answers = DatabaseHelper.get_application_answer_is_correct
             # Сохраняем потраченное время на предыдущий вопрос
             if self.selected_question_number is not None:
                 DatabaseHelper.presave_applicant_answer(
@@ -653,17 +777,17 @@ class Testing(QDialog):
                     id_applicantanswer_questions=self.selected_question_number
                 )
 
-            # Запускаем таймер заново для нового вопроса
-            self.selected_question_number = question_number
-            self.time_spent = 0  # Сбрасываем счетчик времени для нового вопроса
-            self.timer.start(1000)  # Обновление каждую секунду (1000 мс)
+        # Запускаем таймер заново для нового вопроса
+        self.selected_question_number = question_number
+        self.time_spent = 0  # Сбрасываем счетчик времени для нового вопроса
+        self.timer.start(1000)  # Обновление каждую секунду (1000 мс)
 
 
         self.selected_question_number = question_number
 
 
         # Получаем вопрос из базы по индексу
-        question = DatabaseHelper.get_question_for_applicant_by_index(self.random_test.id_test, question_number - 1)
+        question = DatabaseHelper.get_question_for_applicant_by_index(self.random_test.id_test, question_number - 1, self.applicant.id_applicant)
 
         if question:
             self.ui.list_quest_test.clear()

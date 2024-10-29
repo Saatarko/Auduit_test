@@ -22,18 +22,18 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(617, 194)
+        MainWindow.resize(474, 194)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.btnstart_test = QPushButton(self.centralwidget)
         self.btnstart_test.setObjectName(u"btnstart_test")
         self.btnstart_test.setGeometry(QRect(10, 130, 221, 51))
         font = QFont()
-        font.setPointSize(24)
+        font.setPointSize(18)
         self.btnstart_test.setFont(font)
         self.btn_go_menu = QPushButton(self.centralwidget)
         self.btn_go_menu.setObjectName(u"btn_go_menu")
-        self.btn_go_menu.setGeometry(QRect(480, 20, 121, 31))
+        self.btn_go_menu.setGeometry(QRect(340, 20, 121, 31))
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(10, 70, 291, 16))
@@ -45,7 +45,11 @@ class Ui_MainWindow(object):
         self.linefio_edit.setGeometry(QRect(10, 100, 451, 22))
         self.label_logo = QLabel(self.centralwidget)
         self.label_logo.setObjectName(u"label_logo")
-        self.label_logo.setGeometry(QRect(0, 0, 191, 71))
+        self.label_logo.setGeometry(QRect(10, 0, 191, 71))
+        self.btnclose = QPushButton(self.centralwidget)
+        self.btnclose.setObjectName(u"btnclose")
+        self.btnclose.setGeometry(QRect(340, 130, 121, 51))
+        self.btnclose.setFont(font)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -59,5 +63,6 @@ class Ui_MainWindow(object):
         self.btn_go_menu.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043b\u0443\u0436\u0435\u0431\u043d\u043e\u0435 \u043c\u0435\u043d\u044e", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043b\u044f \u043d\u0430\u0447\u0430\u043b\u0430 \u0442\u0435\u0441\u0442\u0430 \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0412\u0430\u0448\u0435 \u0424\u0418\u041e", None))
         self.label_logo.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.btnclose.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
     # retranslateUi
 

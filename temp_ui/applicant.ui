@@ -7,11 +7,16 @@
     <x>0</x>
     <y>0</y>
     <width>919</width>
-    <height>540</height>
+    <height>692</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton:focus {
+      border: 2px solid red; /* Цвет рамки при нажатии */
+}</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -42,7 +47,7 @@
      <x>40</x>
      <y>100</y>
      <width>621</width>
-     <height>192</height>
+     <height>221</height>
     </rect>
    </property>
   </widget>
@@ -50,9 +55,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>330</y>
+     <y>420</y>
      <width>621</width>
-     <height>192</height>
+     <height>201</height>
     </rect>
    </property>
   </widget>
@@ -62,8 +67,14 @@
      <x>690</x>
      <y>100</y>
      <width>211</width>
-     <height>411</height>
+     <height>541</height>
     </rect>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -83,7 +94,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>300</y>
+     <y>390</y>
      <width>111</width>
      <height>16</height>
     </rect>

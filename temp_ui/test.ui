@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton:focus {
+      border: 2px solid red; /* Цвет рамки при нажатии */
+}</string>
+  </property>
   <widget class="QListWidget" name="list_answer_c">
    <property name="geometry">
     <rect>
@@ -648,7 +653,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Подтвердить выбранные ответы</string>
+    <string>Сохранить выбранные ответы</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -793,10 +798,10 @@
   <widget class="QPushButton" name="btn_end_test">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>10</y>
+     <x>710</x>
+     <y>20</y>
      <width>271</width>
-     <height>24</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">

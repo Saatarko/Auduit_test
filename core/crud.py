@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QMessageBox
 from sqlalchemy import desc
-from sqlalchemy.orm import joinedload
+from sqlalchemy.orm import joinedload, contains_eager
 
 from .config import Base, engine, SessionLocal
 from .models import Tests, Questions, Themas, Answer, Applicant, ApplicantAnswer
@@ -155,29 +155,43 @@ class DatabaseHelper:
             return theme.id_themas if theme else None
 
     @staticmethod
-    def get_question_for_applicant_by_index(test_id, question_index):
+    def get_question_for_applicant_by_index(test_id, question_index, applicant_id):
         with SessionLocal() as session:
-            # Загружаем вопрос вместе с ответами и темой с помощью joinedload
-            questions = (
+            # Загружаем вопрос, варианты ответов и тему
+            question_query = (
                 session.query(Questions)
-                .filter_by(id_quest_test=test_id)
+                .filter(
+                    Questions.id_quest_test == test_id)  # Используем filter вместо filter_by для более сложных условий
                 .options(
-                    joinedload(Questions.applicant_answers),  # Подгружаем ответы соискателя
-                    joinedload(Questions.answers), # Подгружаем варианты ответа
+                    joinedload(Questions.answers),  # Подгружаем варианты ответа
                     joinedload(Questions.thema)  # Подгружаем тему вопроса
                 )
-                .order_by(Questions.id_quest)
-                .all()
             )
+
+            # Получаем все вопросы
+            questions = question_query.all()
+
             if 0 <= question_index < len(questions):
-                return questions[question_index]
+                question = questions[question_index]
+
+                # Фильтруем ответы соискателя по applicant_id
+                applicant_answers = (
+                    session.query(ApplicantAnswer)
+                    .filter(ApplicantAnswer.id_applicantanswer_applicant == applicant_id,
+                            ApplicantAnswer.id_applicantanswer_questions == question.id_quest)
+                    .all()
+                )
+                question.applicant_answers = applicant_answers  # Заменяем на отфильтрованные ответы
+
+                return question
+
             return None
 
     @staticmethod
-    def add_applicant(applicant_name: str):
+    def add_applicant(applicant_name: str, id_applicant_test: int):
         # Используем `with` для автоматического закрытия сессии после использования
         with SessionLocal() as session:
-            new_applicant = Applicant(fio=applicant_name)
+            new_applicant = Applicant(fio=applicant_name, id_applicant_test=id_applicant_test)
             session.add(new_applicant)
             try:
                 session.commit()
@@ -220,10 +234,11 @@ class DatabaseHelper:
                 id_applicantanswer_questions=id_applicantanswer_questions
             ).all()
 
+            # проверяем был ли уже созраненный ответ
             if answers:
-                # Если ответы уже существуют, обновляем только время
-                for answer in answers:
-                    answer.time_spent = time_spent
+                if answers[0].is_correct is True or answers[1].is_correct is True or answers[2].is_correct is True or answers[3].is_correct is True:
+                    for answer in answers:
+                        answer.time_spent = time_spent
             else:
                 # Если ответов не существует, создаем записи для каждого варианта ответа
                 answers = [
@@ -239,6 +254,20 @@ class DatabaseHelper:
 
             # Сохраняем изменения в базе данных
             session.commit()
+
+    @staticmethod
+    def get_application_answer_is_correct(
+            id_applicantanswer_applicant: int,
+            id_applicantanswer_questions: int
+    ):
+        with SessionLocal() as session:
+            answers = session.query(ApplicantAnswer).filter_by(
+                id_applicantanswer_applicant=id_applicantanswer_applicant,
+                id_applicantanswer_questions=id_applicantanswer_questions
+            ).all()
+
+        return answers
+
 
     @staticmethod
     def get_timer(
@@ -280,10 +309,14 @@ class DatabaseHelper:
                 id_applicantanswer_questions=id_applicantanswer_questions
             ).all()
 
+            is_correct_list = [is_correct_a, is_correct_b, is_correct_c, is_correct_d]
+
             if answers:
                 # Если ответы уже существуют, обновляем только время
-                for answer in answers:
-                    answer.time_spent = time_spent
+                for i, answer in enumerate(answers):
+                    if i < len(is_correct_list):
+                        answer.time_spent = time_spent
+                        answer.is_correct = is_correct_list[i]
             else:
                 # Если ответов не существует, создаем записи для каждого варианта ответа
                 answers = [
@@ -364,58 +397,162 @@ class DatabaseHelper:
             # Получаем тест, связанный с соискателем
             test = session.query(Tests).filter(Tests.id_test == applicant.id_applicant_test).one_or_none()
 
-            # Получаем ответы соискателя
-            applicant_answers = session.query(ApplicantAnswer).filter(
+            # Получаем ответы соискателя и подгружаем связанные объекты
+            applicant_answers = session.query(ApplicantAnswer).options(
+                joinedload(ApplicantAnswer.question)
+            ).filter(
                 ApplicantAnswer.id_applicantanswer_applicant == applicant_id
             ).all()
 
-            # Получаем правильные ответы для теста
-            correct_answers = session.query(Answer).join(Questions).filter(
+            # Список ответов соискателя с деталями
+            applicant_answers_list = []
+            for answer in applicant_answers:
+                applicant_answers_list.append({
+                    "question_id": answer.question.id_quest if answer.question else None,
+                    "is_correct": answer.is_correct,
+                    "time_spent": answer.time_spent
+                })
+
+            # Подсчитываем правильные ответы и прочие данные для теста
+            correct_answers = session.query(Answer).options(
+                joinedload(Answer.question)
+            ).join(Questions).filter(
                 Questions.id_quest_test == applicant.id_applicant_test
             ).all()
 
-            # Подсчитываем количество отвеченных вопросов и правильных ответов
-            total_questions = len(correct_answers)
-            answered_questions = len(applicant_answers)
-            correct_answers_count = sum(1 for answer in applicant_answers if answer.is_correct)
 
-            # Подсчитываем процент правильных ответов
-            correct_answers_percent = (correct_answers_count / total_questions * 100) if total_questions > 0 else 0
+            # Формируем словарь для результатов
+            results_dict = {}
+            missing_questions = set(range(1, 38))  # Номера вопросов от 1 до 37
+            answered_questions_count = 0
+
+
+            # переменная для подсчет времени
+
+            time = 0
+
+            # Группируем правильные ответы по вопросам
+            correct_answers_by_question = {}
+            for answer in correct_answers:
+                question_id = answer.question.id_quest
+                if question_id not in correct_answers_by_question:
+                    correct_answers_by_question[question_id] = []
+                correct_answers_by_question[question_id].append(answer)
+
+            # Сравниваем ответы соискателя с правильными ответами
+            for question_id in range(1, 38):  # Для вопросов с 1 по 37
+
+
+
+
+                if question_id in correct_answers_by_question:
+                    correct_answers_list = correct_answers_by_question[question_id]
+                    correct_count = sum(1 for answer in correct_answers_list if answer.is_correct)
+                    matching_correct_answers = 0
+
+                    # Получаем ответы соискателя для текущего вопроса
+                    applicant_answers_for_question = [
+                        answer for answer in applicant_answers if answer.question.id_quest == question_id
+                    ]
+
+                    if applicant_answers_for_question:
+                        # answered_questions_count += 1  # Увеличиваем счетчик отвеченных вопросов
+                        time += applicant_answers_for_question[0].time_spent
+                        # Подсчитываем количество правильных ответов
+                        for i in range(0,3):
+                            if (correct_answers_list[i].is_correct is True) and (applicant_answers_for_question[i].is_correct is True):
+                                matching_correct_answers += 1
+
+                        if all(not answer.is_correct for answer in applicant_answers_for_question):
+                            # Если все ответы не правильные, но вопрос прочитали
+                            results_dict[
+                                question_id] = 0  # Здесь можно задать любое значение, которое будет означать "не ответили"
+                            missing_questions.remove(question_id)
+
+                        else:
+                            answered_questions_count += 1
+                            if correct_count == 1:
+                                # Один правильный ответ
+                                results_dict[question_id] = 1 if matching_correct_answers == 1 else 0
+                            elif correct_count == 2:
+                                # Два правильных ответа
+                                if matching_correct_answers == 2:
+                                    results_dict[question_id] = 1
+                                elif matching_correct_answers == 1:
+                                    results_dict[question_id] = 0.5
+                                else:
+                                    results_dict[question_id] = 0
+                            elif correct_count == 3:
+                                # Три правильных ответа
+                                if matching_correct_answers == 3:
+                                    results_dict[question_id] = 1
+                                elif matching_correct_answers == 2:
+                                    results_dict[question_id] = 0.66
+                                elif matching_correct_answers == 1:
+                                    results_dict[question_id] = 0.33
+                                else:
+                                    results_dict[question_id] = 0
+                    else:
+                        # Вопрос не был отвечен
+                        results_dict[
+                            question_id] = 0
+                        # missing_questions.remove(question_id)
+
+            # Подсчитываем результаты
+            total_questions_all = 37
+            total_answered = answered_questions_count
+            correct_answers_sum = sum(results_dict.values())
+
+            # Процент правильных ответов
+            if total_answered > 0:
+                percentage_correct_answered = (correct_answers_sum / total_answered) * 100
+            else:
+                percentage_correct_answered = 0
+
+            # Процент правильных ответов из всех вопросов
+            percentage_correct_all = (correct_answers_sum / total_questions_all) * 100
+
+            # Получаем все вопросы с темами
+            question_with_thema = session.query(Questions).options(
+                joinedload(Questions.thema)
+            ).all()
 
             # Группируем данные по темам
-            theme_stats = {}
-            for answer in applicant_answers:
-                question = session.query(Questions).filter(
-                    Questions.id_quest == answer.id_applicantanswer_questions).one_or_none()
-                if question:
-                    theme_id = question.id_quest_themas
-                    if theme_id not in theme_stats:
-                        theme_stats[theme_id] = {"correct_count": 0, "total_count": 0}
+            theme_scores = {}
+            theme_counts = {}
 
-                    # Увеличиваем общее количество вопросов по теме
-                    theme_stats[theme_id]["total_count"] += 1
+            for question in question_with_thema:
+                theme_name = question.thema.name if question.thema else "Неизвестная тема"
 
-                    # Проверяем, правильный ли ответ
-                    if answer.is_correct:
-                        theme_stats[theme_id]["correct_count"] += 1
+                # Инициализируем тему, если еще не добавлена в словари
+                if theme_name not in theme_scores:
+                    theme_scores[theme_name] = 0
+                    theme_counts[theme_name] = 0
 
-            # Подсчитываем процент правильных ответов по темам
+                # Добавляем оценку вопроса в тему, если вопрос есть в results_dict
+                if question.id_quest in results_dict:
+                    theme_scores[theme_name] += results_dict[question.id_quest]
+                    theme_counts[theme_name] += 1
+
+            # Рассчитываем процент правильных ответов по каждой теме
             theme_results = []
-            for theme_id, stats in theme_stats.items():
-                theme_name = session.query(Themas).filter(Themas.id_themas == theme_id).one_or_none()
-                if theme_name:
-                    correct_percent = (stats["correct_count"] / stats["total_count"] * 100) if stats[
-                                                                                                   "total_count"] > 0 else 0
-                    theme_results.append({"theme_name": theme_name.name, "correct_percent": correct_percent})
+            for theme_name, score_sum in theme_scores.items():
+                total_questions = theme_counts[theme_name]
+                theme_percentage = (score_sum / total_questions * 100) if total_questions > 0 else 0
+                theme_results.append({"theme_name": theme_name, "correct_percent": theme_percentage})
 
-            # Формируем итоговый результат
             result_summary = {
                 "fio": applicant.fio,
                 "test_name": test.name if test else "Неизвестный тест",
-                "answered_questions": answered_questions,
-                "total_questions": total_questions,
-                "correct_answers_percent": correct_answers_percent,
-                "themes": theme_results,
+                "answered_questions": total_answered,
+                "total_questions_all": total_questions_all,
+                "correct_answers_percent": percentage_correct_answered,
+                "correct_answers_percent_all": percentage_correct_all,
+                "theme_results": theme_results,
+                "applicant_answers": applicant_answers_list,  # добавляем ответы соискателя
+                "id_applicant_test": applicant.id_applicant_test,
+                "correct_answers": correct_answers,
+                "time": time,
             }
 
             return result_summary

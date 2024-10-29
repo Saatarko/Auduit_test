@@ -24,6 +24,9 @@ class Ui_Dialog(object):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(1088, 727)
+        Dialog.setStyleSheet(u"QPushButton:focus {\n"
+"      border: 2px solid red; /* \u0426\u0432\u0435\u0442 \u0440\u0430\u043c\u043a\u0438 \u043f\u0440\u0438 \u043d\u0430\u0436\u0430\u0442\u0438\u0438 */\n"
+"}")
         self.list_answer_c = QListWidget(Dialog)
         self.list_answer_c.setObjectName(u"list_answer_c")
         self.list_answer_c.setGeometry(QRect(440, 500, 281, 121))
@@ -327,7 +330,7 @@ class Ui_Dialog(object):
         self.line_fio.setGeometry(QRect(1020, 50, 61, 22))
         self.btn_end_test = QPushButton(Dialog)
         self.btn_end_test.setObjectName(u"btn_end_test")
-        self.btn_end_test.setGeometry(QRect(630, 10, 271, 24))
+        self.btn_end_test.setGeometry(QRect(710, 20, 271, 41))
 
         self.retranslateUi(Dialog)
 
@@ -377,7 +380,7 @@ class Ui_Dialog(object):
         self.btn_quest_36.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 36", None))
         self.btn_quest_37.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 37", None))
         self.checkBox_answer_a.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
-        self.btn_accept_answer.setText(QCoreApplication.translate("Dialog", u"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043e\u0442\u0432\u0435\u0442\u044b", None))
+        self.btn_accept_answer.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043e\u0442\u0432\u0435\u0442\u044b", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u043a\u0441\u0442 \u0432\u043e\u043f\u0440\u043e\u0441\u0430", None))
         self.label_2.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0430", None))
         self.label_3.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0431", None))

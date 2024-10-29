@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>617</width>
+    <width>474</width>
     <height>194</height>
    </rect>
   </property>
@@ -25,7 +25,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>24</pointsize>
+      <pointsize>18</pointsize>
      </font>
     </property>
     <property name="text">
@@ -35,7 +35,7 @@
    <widget class="QPushButton" name="btn_go_menu">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>340</x>
       <y>20</y>
       <width>121</width>
       <height>31</height>
@@ -76,7 +76,7 @@
    <widget class="QLabel" name="label_logo">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
       <width>191</width>
       <height>71</height>
@@ -84,6 +84,24 @@
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnclose">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>130</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Выйти</string>
     </property>
    </widget>
   </widget>
