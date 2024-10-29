@@ -9,6 +9,7 @@ readme = "README.md"
 python = ">=3.10,<3.14"
 pyside6 = "^6.8.0.2"
 sqlalchemy = "^2.0.36"
+pyinstaller = "^6.11.0"
 
 [build-system]
 requires = ["poetry-core"]
