@@ -78,6 +78,7 @@ class Mainwindow(QMainWindow):
 
         if fio:
             self.open_test(fio)
+            self.ui.linefio_edit.clear()
         else:
 
             msg = QMessageBox()
@@ -159,6 +160,9 @@ class Mainwindow(QMainWindow):
     def open_list_applicant(self):
         if self.mid_menu_applicant_dialog is not None:
             self.mid_menu_applicant_dialog.accept()
+
+        if self.menu_dialog is not None:
+            self.menu_dialog.accept()
 
         # Создаем и отображаем список тестов
         self.list_applicant_dialog = QDialog()
@@ -361,6 +365,9 @@ class Mainwindow(QMainWindow):
         if self.mid_menu_test_dialog is not None:
             self.mid_menu_test_dialog.accept()
 
+        if self.menu_dialog is not None:
+            self.menu_dialog.accept()
+
         # Создаем и отображаем список тестов
         self.list_test_dialog = QDialog()
         self.list_test_ui = Ui_Dialog_list_test()
@@ -458,7 +465,7 @@ class Mainwindow(QMainWindow):
         self.create_test_menu_ui.setupUi(self.create_test_menu_dialog)
 
         self.create_test_menu_ui.btn_create_test.clicked.connect(self.handle_create_test)
-
+        self.create_test_menu_ui.btn_return.clicked.connect(self.create_test_menu_dialog.reject)
         self.create_test_menu_dialog.exec()
 
     def handle_create_test(self):

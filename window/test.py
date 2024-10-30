@@ -8,11 +8,16 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize,
-    Qt)
-from PySide6.QtGui import QFont
-from PySide6.QtWidgets import (QCheckBox, QGridLayout, QLabel, QLineEdit,
-    QListWidget, QPushButton, QWidget)
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDialog, QGridLayout,
+    QLabel, QLineEdit, QListWidget, QListWidgetItem,
+    QPushButton, QSizePolicy, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -34,7 +39,7 @@ class Ui_Dialog(object):
         self.list_answer_a.setWordWrap(True)
         self.checkBox_answer_d = QCheckBox(Dialog)
         self.checkBox_answer_d.setObjectName(u"checkBox_answer_d")
-        self.checkBox_answer_d.setGeometry(QRect(860, 640, 79, 20))
+        self.checkBox_answer_d.setGeometry(QRect(850, 630, 79, 20))
         self.list_quest_test = QListWidget(Dialog)
         self.list_quest_test.setObjectName(u"list_quest_test")
         self.list_quest_test.setGeometry(QRect(440, 90, 591, 161))
@@ -50,7 +55,7 @@ class Ui_Dialog(object):
         self.checkBox_answer_c.setGeometry(QRect(540, 630, 79, 20))
         self.checkBox_answer_b = QCheckBox(Dialog)
         self.checkBox_answer_b.setObjectName(u"checkBox_answer_b")
-        self.checkBox_answer_b.setGeometry(QRect(840, 430, 79, 20))
+        self.checkBox_answer_b.setGeometry(QRect(850, 420, 79, 20))
         self.layoutWidget = QWidget(Dialog)
         self.layoutWidget.setObjectName(u"layoutWidget")
         self.layoutWidget.setGeometry(QRect(20, 20, 401, 590))
@@ -296,24 +301,6 @@ class Ui_Dialog(object):
         font = QFont()
         font.setPointSize(12)
         self.label.setFont(font)
-        self.label_2 = QLabel(Dialog)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(550, 270, 49, 16))
-        font1 = QFont()
-        font1.setPointSize(10)
-        self.label_2.setFont(font1)
-        self.label_3 = QLabel(Dialog)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(860, 270, 49, 16))
-        self.label_3.setFont(font1)
-        self.label_4 = QLabel(Dialog)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(550, 470, 49, 16))
-        self.label_4.setFont(font1)
-        self.label_5 = QLabel(Dialog)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(860, 470, 49, 16))
-        self.label_5.setFont(font1)
         self.label_6 = QLabel(Dialog)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setGeometry(QRect(20, 620, 381, 101))
@@ -334,9 +321,9 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.checkBox_answer_d.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
-        self.checkBox_answer_c.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
-        self.checkBox_answer_b.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
+        self.checkBox_answer_d.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 d)", None))
+        self.checkBox_answer_c.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0441)", None))
+        self.checkBox_answer_b.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 b)", None))
         self.btn_quest_1.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 1", None))
         self.btn_quest_2.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 2", None))
         self.btn_quest_3.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 3", None))
@@ -374,13 +361,9 @@ class Ui_Dialog(object):
         self.btn_quest_35.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 35", None))
         self.btn_quest_36.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 36", None))
         self.btn_quest_37.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u043f\u0440\u043e\u0441 37", None))
-        self.checkBox_answer_a.setText(QCoreApplication.translate("Dialog", u"CheckBox", None))
+        self.checkBox_answer_a.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0430)", None))
         self.btn_accept_answer.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043e\u0442\u0432\u0435\u0442\u044b", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u0422\u0435\u043a\u0441\u0442 \u0432\u043e\u043f\u0440\u043e\u0441\u0430", None))
-        self.label_2.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0430", None))
-        self.label_3.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 \u0431", None))
-        self.label_4.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 c", None))
-        self.label_5.setText(QCoreApplication.translate("Dialog", u"\u041e\u0442\u0432\u0435\u0442 d", None))
         self.label_6.setText(QCoreApplication.translate("Dialog", u"<html>\n"
 "<head/>\n"
 "<body>\n"
