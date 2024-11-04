@@ -684,23 +684,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;
-&lt;head/&gt;
-&lt;body&gt;
-    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
-        Вопрос на который Вы отвечаете выделяется красной рамкой.
-    &lt;/p&gt;
-    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
-        Вопрос на которые Вы подтвердили ответы выделяются
-    &lt;/p&gt;
-    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
-        зеленым цветом. Если вы перейдете на другой вопрос не
-    &lt;/p&gt;
-    &lt;p align=&quot;justify&quot; style=&quot;line-height: 1.0;&quot;&gt;
-        нажав кнопку сохранения Ваши выборы не сохранятся.
-    &lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Вопрос на который Вы отвечаете выделяется красной рамкой. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Вопросы на которые Вы ответили выделяются зеленым цветом.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Если вы перейдете на другой вопрос не нажав кнопку &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;сохранения Ваш ответ не сохранится. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="line_test">
